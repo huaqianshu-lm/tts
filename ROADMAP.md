@@ -7,7 +7,6 @@
 
 ## 已完成
 
-- 创建第二部视频目录 `projects/how-to-install/`。
 - 将生成脚本改为支持 `--project-dir`。
 - 复制 `claude-code-install` 的口播源到 `projects/how-to-install/source/narration-script.md`。
 - 生成 `how-to-install` 的 TTS Script：12 个 Scene、76 个 Segment。
@@ -17,6 +16,7 @@
 - 接收 `claude-code-api-config` 的 12 个 Scene、60 个 Segment 冻结输入，并通过哈希、ID、空文本和内部制作文字校验。
 - 完成 `claude-code-api-config` 的 60 个音频、60 个 Timing、111 条字幕 Cue、SRT／VTT 和 256.248 秒 Timeline，并以 `+25%` 语速记录在 Audio Manifest。
 - 修复字幕 Cue 边界 `.strip()` 删除中英文间空格的问题，全部 60 个 Segment 的 Cue 拼接文本恢复为与 TTS Script 逐字一致。
+- 补齐公开 README，说明安装、输入约定、完整生成流程、产物目录和 Video Harness 接入方式。
 
 ## 进行中
 
@@ -29,7 +29,6 @@
 
 ## 最近验证
 
-- 四个生成脚本通过 Python 编译检查和 CLI 参数检查。
 - `--project-dir projects/how-to-install` 的默认输入输出路径解析正确。
 - `what-is-claude-code` 的 14 个 Scene、166 个 Segment 及各类 Manifest 保持有效。
 - `how-to-install` 的 12 个 Scene、76 个 Segment、176 条字幕 Cue 和 365.736 秒时间轴校验通过。
@@ -39,3 +38,4 @@
 - `claude-code-api-config` 最终校验通过：12 个 Scene、60 个 Segment、111 条字幕 Cue、256.248 秒总时长，60 个 MP3 实际时长与 Audio Manifest 完全一致。
 - 全部字幕 Cue 按 Segment 拼接后与冻结版 `tts-script.json` 逐字一致，SRT／VTT 均为 111 条，未包含内部制作文字。
 - 对三个现有项目回放新旧 Cue 边界算法：没有新增文本回归，并修复 `what-is-claude-code` 3 段、`how-to-install` 1 段和 `claude-code-api-config` 1 段由 `.strip()` 导致的空格丢失；旧项目未重新写入产物。
+- README 中的脚本参数、默认路径和产物名称已与四个生成脚本逐项核对。
